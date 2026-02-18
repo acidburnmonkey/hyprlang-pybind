@@ -4,17 +4,20 @@ build-backend = "scikit_build_core.build"
 
 [project]
 name = "hyprlang-pybind"
-version = "0.1.0"
+version = "0.1.1"
 description = "Python bindings for hyprlang configuration parser"
+readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "pytest>=9.0.2",
-]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.0.2"]
 
 [tool.scikit-build]
 cmake.build-type = "Release"
 wheel.packages = ["src/hyprlang_pybind"]
 build-dir = "build/{wheel_tag}"
+
+sdist.exclude = ["tests/", "docs/", ".*", "uv.lock"]
 
 [tool.scikit-build.cmake.define]
 FETCHCONTENT_QUIET = "OFF"
